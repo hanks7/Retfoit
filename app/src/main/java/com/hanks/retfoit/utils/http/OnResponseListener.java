@@ -88,14 +88,6 @@ public class OnResponseListener<T extends BaseBean> implements Callback<T> {
         onFailureDeal(444, tag);
     }
 
-    /**
-     * 请求成功时返回，必须重写此方法
-     *
-     * @param t
-     */
-    public void onSuccess(T t) {
-
-    }
 
     /**
      * 请求失败时返回，需要时重写此方法(默认是弹出吐司)
@@ -103,6 +95,15 @@ public class OnResponseListener<T extends BaseBean> implements Callback<T> {
     private void onFailureDeal(int code, String strToast) {
         onFailure(code, strToast);
         Ulog.i("http-Adapter-onFailureDeal", code + strToast);
+    }
+
+    /**
+     * 请求成功时返回，必须重写此方法
+     *
+     * @param t
+     */
+    public void onSuccess(T t) {
+
     }
 
     /**

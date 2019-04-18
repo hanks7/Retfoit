@@ -39,7 +39,7 @@ public class HttpAdapter {
      *
      * @return
      */
-    private static HttpApis initApis() {
+    public static HttpApis initApis() {
         OkHttpClient client = new OkHttpClient();
         client = client.newBuilder()
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
