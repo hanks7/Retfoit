@@ -2,7 +2,6 @@ package com.hanks.retfoit.utils.http;
 
 
 import java.io.IOException;
-import java.util.List;
 
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -10,9 +9,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okio.Buffer;
-
-import static com.hanks.retfoit.utils.http.HttpApis.Url1;
-import static com.hanks.retfoit.utils.http.HttpApis.Url2;
 
 /**
  * @author 侯建军 47466436@qq.com
@@ -31,19 +27,10 @@ public class MoreBaseUrlInterceptor implements Interceptor {
         //获取originalRequest的创建者builder
         Request.Builder builder = originalRequest.newBuilder();
         //获取头信息的集合如：manage,mdffx
-        List<String> urlnameList = originalRequest.headers("urlname");
-        if (urlnameList != null && urlnameList.size() > 0) {
-            //删除原有配置中的值,就是namesAndValues集合里的值
-            builder.removeHeader("urlname");
+        String urlname = originalRequest.header("urlname");
+        if (urlname != null) {
             //获取头信息中配置的value,如：manage或者mdffx
-            String urlname = urlnameList.get(0);
-            HttpUrl baseURL = null;
-            //根据头信息中配置的value,来匹配新的base_url地址
-            if ("url1".equals(urlname)) {
-                baseURL = HttpUrl.parse( Url1);
-            } else if ("url2".equals(urlname)) {
-                baseURL = HttpUrl.parse( Url2);
-            }
+            HttpUrl baseURL = HttpUrl.parse(urlname);
             //重建新的HttpUrl，需要重新设置的url部分
             HttpUrl newHttpUrl = oldUrl.newBuilder()
                     .scheme(baseURL.scheme())//http协议如：http或者https

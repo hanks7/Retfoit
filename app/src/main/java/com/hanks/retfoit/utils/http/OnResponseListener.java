@@ -62,11 +62,7 @@ public class OnResponseListener<T extends BaseBean> implements Callback<T> {
         dismiss();
         Ulog.i("http-Adapter-onResponse.code()", bean.code());
         if (bean.code() == 200) {
-            if (bean.body().isError()) {//这句话其实表示如果 getM() 值中没有"|" 后面的值 表示 返回值 是一个成功的实体类
-                onFailureDeal(bean.body().getErrorCode(), bean.body().getM());
-            } else {
-                onSuccess(bean.body());
-            }
+            onSuccess(bean.body());
 
         } else {
             String strError = "";
@@ -113,7 +109,7 @@ public class OnResponseListener<T extends BaseBean> implements Callback<T> {
      * 请求失败时返回，需要时重写此方法(默认是弹出吐司)
      */
     public void onFailure(int code, String strToast) {
-        UToast.showText(strToast);
+        UToast.showText("code:" + code + "  " + strToast);
     }
 
 

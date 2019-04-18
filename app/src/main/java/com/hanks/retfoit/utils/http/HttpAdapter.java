@@ -29,7 +29,7 @@ public class HttpAdapter {
      */
     public static HttpApis getApis() {
         if (apis == null) {
-            apis = initApis(HttpApis.Url3);
+            apis = initApis(HttpApis.Url2);
         }
         return apis;
     }

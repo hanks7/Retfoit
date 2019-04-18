@@ -2,23 +2,12 @@ package com.hanks.retfoit.utils.http;
 
 
 import com.hanks.retfoit.bean.BaseBean;
+import com.hanks.retfoit.bean.Test1Bean;
 
-import java.util.Map;
-
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
-import retrofit2.http.Url;
 
 /**
  * Created by caihan on 2017/1/11.
@@ -56,54 +45,31 @@ public interface HttpApis {
     /**
      * http://easyway.com.cn:8088/CustomServicesApi/Scanner?type=1&code=test&msg=t&verify=1
      */
-    String Url3 = "http://easyway.com.cn:8088";
+    String Url3 = "http://api.k780.com:8";
+
 
     /**
-     * @param fields
+     * 通过注解静态修改baseUrl
+     *
      * @return
      */
-    @FormUrlEncoded
-    @POST("/api/Scanner")
-    Call<BaseBean> getScanner3(@Url String url,
-                               @FieldMap Map<String, String> fields
-    );
-
-    @GET
-    Call<ResponseBody> profilePicture(@Url String url);
-
-    @Headers({"urlname:manage"})
-    @POST("members/auth")
-    Call<BaseBean> doLogin(@Body RequestBody requestBody);
-
-    @Headers({"urlname:mdffx"})
-    @FormUrlEncoded
-    @POST("login")
-    Call<BaseBean> doLoginMdffx(@Field("username") String username, @Field("password") String password);
-
-
-    @Headers({"urlname:manage"})
-    @GET("members/datas")
-    Call<BaseBean> doData(@Query("type") int type, @Query("params") int params);
-
-    @POST("{path}")
-    Call<ResponseBody> post(
-            @Path(value = "path", encoded = true) String path,
-            @QueryMap Map<String, Object> map);
-
-    @GET("{path}")
-    Call<ResponseBody> get(
-            @Path(value = "path", encoded = true) String path,
-            @QueryMap Map<String, Object> map);
-
-
-    @Headers({"urlname:url1"})
+    @Headers("urlname:" + Url1)
     @GET("/api/Scanner?type=1&code=623&msg=&verify=")
-    Call<BaseBean> test1();
+    Call<Test1Bean> test1();
 
-    @Headers({"urlname:url2"})
+    /**
+     * 使用默认的baseUrl
+     *
+     * @return
+     */
     @GET("/?APP=life.time&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json")
     Call<BaseBean> test2();
 
+    /**
+     * 通过Header静态修改baseUrl
+     * @param lang
+     * @return
+     */
     @GET("/CustomServicesApi/Scanner?type=1&code=test&msg=t&verify=1")
-    Call<BaseBean> test3();
+    Call<Test1Bean> test3(@Header("urlname") String lang);
 }

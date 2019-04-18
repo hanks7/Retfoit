@@ -13,7 +13,7 @@ import android.util.Log;
  */
 public class Ulog {
     private static final String TAG = "bb-";
-    private static final boolean IS_RELEASE = true;
+    private static final boolean IS_RELEASE = false;
 
     public static void i(Object mess) {
         if (IS_RELEASE) return;
