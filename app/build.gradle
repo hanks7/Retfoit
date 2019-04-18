@@ -17,6 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def appName = defaultConfig.applicationId.substring(defaultConfig.applicationId.lastIndexOf(".") + 1);
+            def newName = appName + "-v-" + defaultConfig.versionCode;
+            newName = newName.replace(".", "_");
+            output.outputFile = new File(output.outputFile.parent, newName + ".apk");
+        }
+    }
 }
 
 dependencies {
@@ -31,7 +40,6 @@ dependencies {
     // 包含了com.squareup.retrofit2:converter-gson:2.0.2
     //包含了com.google.code.gson:gson:2.8.1
     compile 'com.jakewharton:butterknife:8.4.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.0.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'

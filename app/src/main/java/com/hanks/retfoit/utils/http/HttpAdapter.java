@@ -29,7 +29,7 @@ public class HttpAdapter {
      */
     public static HttpApis getApis() {
         if (apis == null) {
-            apis = initApis(HttpApis.Url2);
+            apis = initApis();
         }
         return apis;
     }
@@ -37,10 +37,9 @@ public class HttpAdapter {
     /**
      * 初始化okhttp
      *
-     * @param baseUrl
      * @return
      */
-    private static HttpApis initApis(String baseUrl) {
+    private static HttpApis initApis() {
         OkHttpClient client = new OkHttpClient();
         client = client.newBuilder()
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -50,7 +49,7 @@ public class HttpAdapter {
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .build();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
+                .baseUrl(HttpApis.BaseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(client)

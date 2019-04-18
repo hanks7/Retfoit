@@ -23,25 +23,20 @@ public class MainActivity extends Activity {
     }
 
     private void test() {
-        HttpAdapter.getApis().test1().enqueue(new OnResponseListener<Test1Bean>(null){
+        HttpAdapter.getApis().test1().enqueue(new OnResponseListener<Test1Bean>(null) {
             @Override
             public void onSuccess(Test1Bean bean) {
                 Ulog.i("json", Ugson.toJson(bean));
             }
         });
-        HttpAdapter.getApis().test2().enqueue(new OnResponseListener<BaseBean>(null){
+        HttpAdapter.getApis().test2().enqueue(new OnResponseListener<BaseBean>(null) {
             @Override
             public void onSuccess(BaseBean bean) {
                 Ulog.i("json", Ugson.toJson(bean));
 
             }
-
-            @Override
-            public void onFailure(int code, String strToast) {
-                super.onFailure(code, strToast);
-            }
         });
-        HttpAdapter.getApis().test3("http://easyway.com.cn:8088").enqueue(new OnResponseListener<Test1Bean>(null){
+        HttpAdapter.getApis().test3("http://easyway.com.cn:8088").enqueue(new OnResponseListener<Test1Bean>(null) {
             @Override
             public void onSuccess(Test1Bean bean) {
                 Ulog.i("json", Ugson.toJson(bean));

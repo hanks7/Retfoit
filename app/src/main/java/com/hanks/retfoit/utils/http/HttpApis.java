@@ -40,12 +40,8 @@ import retrofit2.http.Headers;
  */
 public interface HttpApis {
 
+    String BaseUrl = "http://api.k780.com:88";
     String Url1 = "http://172.16.0.81:6666";
-    String Url2 = "http://api.k780.com:88";
-    /**
-     * http://easyway.com.cn:8088/CustomServicesApi/Scanner?type=1&code=test&msg=t&verify=1
-     */
-    String Url3 = "http://api.k780.com:8";
 
 
     /**
@@ -67,6 +63,7 @@ public interface HttpApis {
 
     /**
      * 通过Header静态修改baseUrl
+     *
      * @param lang
      * @return
      */
