@@ -1,14 +1,16 @@
-package com.hanks.retfoit;
+package com.hanks.retfoit.activity;
 
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
+import com.hanks.retfoit.R;
 import com.hanks.retfoit.bean.BaseBean;
 import com.hanks.retfoit.bean.Test1Bean;
 import com.hanks.retfoit.utils.UToast;
 import com.hanks.retfoit.utils.Ugson;
+import com.hanks.retfoit.utils.Uintent;
 import com.hanks.retfoit.utils.http.HttpAdapter;
 import com.hanks.retfoit.utils.http.OnResponseListener;
 
@@ -52,7 +54,7 @@ public class MainActivity extends Activity {
             @Override
             protected void onPostExecute(BaseBean bean) {
                 if (bean != null) {
-                    UToast.showText("json:"+ Ugson.toJson(bean));
+                    UToast.showText("json:" + Ugson.toJson(bean));
                 }
 
             }
@@ -68,7 +70,7 @@ public class MainActivity extends Activity {
         getApis().test1().enqueue(new OnResponseListener<Test1Bean>(null) {
             @Override
             public void onSuccess(Test1Bean bean) {
-                UToast.showText("json:"+ Ugson.toJson(bean));
+                UToast.showText("json:" + Ugson.toJson(bean));
             }
         });
     }
@@ -82,7 +84,7 @@ public class MainActivity extends Activity {
         getApis().test2().enqueue(new OnResponseListener<BaseBean>(null) {
             @Override
             public void onSuccess(BaseBean bean) {
-                UToast.showText("json:"+ Ugson.toJson(bean));
+                UToast.showText("json:" + Ugson.toJson(bean));
             }
         });
     }
@@ -96,7 +98,7 @@ public class MainActivity extends Activity {
         getApis().test3("http://easyway.com.cn:8088").enqueue(new OnResponseListener<Test1Bean>(null) {
             @Override
             public void onSuccess(Test1Bean bean) {
-                UToast.showText("json:"+ Ugson.toJson(bean));
+                UToast.showText("json:" + Ugson.toJson(bean));
             }
         });
     }
@@ -110,9 +112,18 @@ public class MainActivity extends Activity {
         HttpAdapter.initApis().test3("http://easyway.com.cn:8088").enqueue(new OnResponseListener<Test1Bean>(null) {
             @Override
             public void onSuccess(Test1Bean bean) {
-                UToast.showText("json:"+ Ugson.toJson(bean));
+                UToast.showText("json:" + Ugson.toJson(bean));
             }
         });
+    }
+
+    /**
+     * 断点下载
+     *
+     * @param view
+     */
+    public void btnClick6(View view) {
+        Uintent.intentDIY(this, DownloadActivity.class);
     }
 
 

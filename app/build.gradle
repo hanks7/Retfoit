@@ -34,7 +34,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-
+    compile 'com.android.support:appcompat-v7:26+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:26+'
+    compile 'com.android.support:support-v4:26+'
+    compile 'com.android.support:support-vector-drawable:26+'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     // Retrofit库 包含了com.squareup.okhttp3:okhttp:3.1.2
     // 包含了com.squareup.retrofit2:converter-gson:2.0.2
@@ -43,4 +47,5 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
 }
