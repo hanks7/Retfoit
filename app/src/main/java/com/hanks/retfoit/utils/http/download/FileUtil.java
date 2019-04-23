@@ -1,8 +1,6 @@
 package com.hanks.retfoit.utils.http.download;
 
 
-import com.hanks.retfoit.bean.DownloadInfo;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;

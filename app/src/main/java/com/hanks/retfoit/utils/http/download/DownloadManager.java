@@ -3,8 +3,6 @@ package com.hanks.retfoit.utils.http.download;
 import android.os.Environment;
 import android.util.Log;
 
-import com.hanks.retfoit.bean.DownloadInfo;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

@@ -1,7 +1,5 @@
-package com.hanks.retfoit.bean;
+package com.hanks.retfoit.utils.http.download;
 
-
-import com.hanks.retfoit.utils.http.download.DownLoadService;
 
 /**
  * 下载信息
